@@ -89,5 +89,14 @@ public class Controller extends HttpServlet {
 			
 			// Setar a variável JavaBeans
 			contato.setIdcon(idcon);
+			
+			// Executar o método selecionarContato (DAO)
+			dao.selecionarContato(contato);
+			
+			// Teste de recebimento
+			//System.out.println(contato.getIdcon());
+			//System.out.println(contato.getNome());
+			//System.out.println(contato.getFone());
+			//System.out.println(contato.getEmail());
 	}
 }
