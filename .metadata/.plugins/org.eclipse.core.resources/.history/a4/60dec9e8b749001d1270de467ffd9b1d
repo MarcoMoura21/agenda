@@ -1,7 +1,0 @@
-/**
- * Validação de formulário
- */
- 
- function validar () {
-	alert("teste")
-}

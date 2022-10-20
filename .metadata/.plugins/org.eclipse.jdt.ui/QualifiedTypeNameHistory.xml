@@ -5,4 +5,6 @@
     <fullyQualifiedTypeName name="model.DAO"/>
     <fullyQualifiedTypeName name="model.JavaBeans"/>
     <fullyQualifiedTypeName name="java.lang.reflect.Array"/>
+    <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
+    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
 </qualifiedTypeNameHistroy>
