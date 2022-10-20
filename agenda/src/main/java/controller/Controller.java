@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.DAO;
 import model.JavaBeans;
 
-@WebServlet(urlPatterns = { "/Controller", "/main", "/insert", "/select", "/update" })
+@WebServlet(urlPatterns = { "/Controller", "/main", "/insert", "/select", "/update", "/delete" })
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	DAO dao = new DAO();
@@ -36,6 +36,8 @@ public class Controller extends HttpServlet {
 			listarContato(request, response);
 		} else if (action.equals("/update")) {
 			editarContato(request, response);
+		} else if (action.equals("/delete")) {
+			removerContato(request, response);
 		} else {
 			response.sendRedirect("index.html");
 		}
@@ -111,7 +113,7 @@ public class Controller extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher("editar.jsp");
 		rd.forward(request, response);
 	}
-	
+
 	protected void editarContato(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// Teste de recebimento
@@ -119,16 +121,32 @@ public class Controller extends HttpServlet {
 		// System.out.println(request.getParameter("nome"));
 		// System.out.println(request.getParameter("fone"));
 		// System.out.println(request.getParameter("email"));
-		
+
 		// Setar as variáveis JavaBeans
 		contato.setIdcon(request.getParameter("idcon"));
 		contato.setNome(request.getParameter("nome"));
 		contato.setFone(request.getParameter("fone"));
 		contato.setEmail(request.getParameter("email"));
-		
+
 		// Executar o método alterarContato
 		dao.alterarContato(contato);
-		
+
+		// Redirecionar para o documento agenda.jsp (atualizado as alterações)
+		response.sendRedirect("main");
+	}
+
+	// Remover contato
+	protected void removerContato(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// Recebimento do id do contato a ser excluido (validador.js)
+		String idcon = request.getParameter("idcon");
+		// System.out.println(idcon);
+
+		// Setar a variável idcon JavaBeans
+		contato.setIdcon(idcon);
+
+		// Executar o método deletar contato (DAO) passando o objeto contato
+		dao.deletarContato(contato);
 		// Redirecionar para o documento agenda.jsp (atualizado as alterações)
 		response.sendRedirect("main");
 	}
