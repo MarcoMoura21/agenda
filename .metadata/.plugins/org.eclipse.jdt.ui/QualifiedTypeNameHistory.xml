@@ -7,4 +7,5 @@
     <fullyQualifiedTypeName name="java.lang.reflect.Array"/>
     <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
     <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+    <fullyQualifiedTypeName name="com.itextpdf.text.pdf.PdfPCell"/>
 </qualifiedTypeNameHistroy>
